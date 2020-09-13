@@ -589,7 +589,8 @@ function helpEval() {
 }
 
 function helpSearch() {
-  disp('usage: hats search [-n <num>] [-s <seed>] [-d <distance>] [-d]');
+  disp('usage: hats search [-n <num>] [-s <seed>] [-d <distance>] [-a]');
+  disp('    [-q] [-c]');
   disp('');
   disp('Searches for optimal strategies');
   disp('');
