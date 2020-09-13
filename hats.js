@@ -581,11 +581,11 @@ function helpEval() {
   disp('   crush(<expr>)            Crush transform of <expr>');
   disp('');
   disp('Examples');
-  disp('   hats eval \'"0100"\'');
-  disp('   hats eval \'[0,1,0,0]\'');
-  disp('   hats eval \'W3\'');
-  disp('   hats eval \'ds(ds(W1))\'');
-  disp('   hats eval \'lr(W1,W1)\'');
+  disp('   eval \'"0100"\'');
+  disp('   eval \'[0,1,0,0]\'');
+  disp('   eval \'W3\'');
+  disp('   eval \'ds(ds(W1))\'');
+  disp('   eval \'lr(W1,W1)\'');
 }
 
 function helpSearch() {
@@ -614,8 +614,8 @@ function helpSearch() {
   disp('        JavaScript code which implements the search.');
   disp('');
   disp('Examples');
-  disp('   hats search -n 4 -q');
-  disp('   hats search -n 5 -d 6');
+  disp('   search -n 4 -q');
+  disp('   search -n 5 -d 6');
 }
 
 // -- Catalog of errors -------------------------------------------------------
