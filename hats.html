@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <!--
 // Copyright 2020 Frederic Ruget
 
@@ -20,56 +22,52 @@
 // IN THE SOFTWARE.
 -->
 
+<html><body>
 
-<div>
-<p>Enter a hats query, then click "Submit":</p>
+<style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+    .tg td{border-color:black;border-style:none;font-family:Arial, sans-serif;font-size:14px;
+        overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:none;font-family:Arial, sans-serif;font-size:14px;
+        font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-0pky{border-color:inherit;text-align:left;vertical-align:top}
+</style>
+<table class="tg">
+    <tbody>
+        <tr>
+            <td class="tg-0pky">
+                Enter a <a href="https://blog.atlant.is/?p=1893">hats query</a>,
+                then click "Submit":
+            </td>
+            <td class="tg-0pky">
+                <button type="button" name="submit" id="submit"
+                style="background-color:PaleGreen;"
+                onclick="hats(false);" >Submit</button>
+            </td>
+            <td class="tg-0pky">
+                <button type="button" name="abort" id="abort"
+                style="background-color:LightGray;"
+                onclick="hats(true);" >Abort</button>
+            </td>
+        </tr>
+        <tr>
+            <td class="tg-0pky" colspan="3">
+                <input type="text" name="query" id="query"
+                style='font-family: monospace' size='64'
+                value='eval &apos;ds(ds(W1))&apos;'
+                onKeyDown="if(event.keyCode==13) hats();">
+            </td>
+        </tr>
+        <tr>
+            <td class="tg-0pky" colspan="3">
+                <div style="width:100%; max-height:300px; overflow:auto">
+                    <pre name="result" id="result"></pre>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
 
-Query: <code><span style='color: green'>$ </span>d8 hats.js -- </code>
-<input type="text" onKeyDown="if(event.keyCode==13) process();" name="query" id="query" style='font-family: monospace' size='40' value='-e &apos;dr("01002120",dr(C3,C3))&apos;'>
-<button type="button" onclick="process();" >Submit</button>
-<br/>
-Result: <pre name="result" id="result"></pre>
+<script type="text/javascript" src="toto.js"></script>
 
-<script>
-
-// From https://stackoverflow.com/questions/39303787/parse-string-into-command-and-args-in-javascript
-function parse_cmdline(cmdline) {
-    var re_next_arg = /^\s*((?:(?:"(?:\\.|[^"])*")|(?:'[^']*')|\\.|\S)+)\s*(.*)$/;
-    var next_arg = ['', '', cmdline];
-    var args = [];
-    while (next_arg = re_next_arg.exec(next_arg[2])) {
-        var quoted_arg = next_arg[1];
-        var unquoted_arg = "";
-        while (quoted_arg.length > 0) {
-            if (/^"/.test(quoted_arg)) {
-                var quoted_part = /^"((?:\\.|[^"])*)"(.*)$/.exec(quoted_arg);
-                unquoted_arg += quoted_part[1].replace(/\\(.)/g, "$1");
-                quoted_arg = quoted_part[2];
-            } else if (/^'/.test(quoted_arg)) {
-                var quoted_part = /^'([^']*)'(.*)$/.exec(quoted_arg);
-                unquoted_arg += quoted_part[1];
-                quoted_arg = quoted_part[2];
-            } else if (/^\\/.test(quoted_arg)) {
-                unquoted_arg += quoted_arg[1];
-                quoted_arg = quoted_arg.substring(2);
-            } else {
-                unquoted_arg += quoted_arg[0];
-                quoted_arg = quoted_arg.substring(1);
-            }
-        }
-        args[args.length] = unquoted_arg;
-    }
-    return args;
-}
-
-function process() {
-    let worker = new Worker('./hats.js');
-    worker.onmessage = function(e) {
-        document.getElementById("result").innerHTML += e.data;
-    }
-    document.getElementById("result").innerHTML = "";
-    worker.postMessage(parse_cmdline(document.getElementById("query").value));
-}
-
-</script>
-</div>
+</body></html>
