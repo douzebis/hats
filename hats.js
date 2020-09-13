@@ -1030,8 +1030,15 @@ function _code_progress(height) {
 // == Main entry point ========================================================
 
 function main(abort) {
-parseCommandLine(args);
-if (command != Cmd.search) return;
+  try {
+  parseCommandLine(args);
+  } catch (e) {
+    disp('Error: ' + e);
+    return;
+  }
+  if (command != Cmd.search) return;
+
+// Fast track for search: generate optimized code...
 
 // -- Strategy digits --------------------------------------------------------
 _______________________________('Environment Abstraction Layer').h2();
