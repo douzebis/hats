@@ -911,8 +911,8 @@ function _code_gotcha(height, ratings) {
     _________________________('    A = %;').r(ALARM_TRIGGER);
     if (distance) ___________('    E += A;');
     if (!quiet) {
-      _______________________('    disp(msg +');
-      _______________________('    "  Progress = -" + (Math.trunc(100*Math.log10(%/p())+0.5)/10) +').r(ratings);
+      _______________________('    ///disp(msg +');
+      _______________________('    disp("Progress = -" + (Math.trunc(100*Math.log10(%/p())+0.5)/10) +').r(ratings);
       _______________________('    "dB after " + Math.trunc((performance.now() - start)/1000+0.5) + "s");');
     }
     _________________________('  }');
