@@ -1105,7 +1105,7 @@ if (distance) {
 } else {
   _____________________________('let farewell = "Done comparing %";').r(ratings.toLocaleString());
 }
-_______________________________('farewell += " strategies in ";');
+_______________________________('farewell += " strategie(s) in ";');
 _______________________________('let duration = performance.now() - start;');
 _______________________________('if (duration < 10000) {');
 _______________________________('  farewell += Math.trunc(duration + 0.5)/1000;');
