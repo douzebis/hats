@@ -579,6 +579,13 @@ function helpEval() {
   disp('   rs(<expr>)               Right shift of <expr>');
   disp('   ds(<expr>)               Double shift of <expr>');
   disp('   crush(<expr>)            Crush transform of <expr>');
+  disp('');
+  disp('Examples');
+  disp('   hats eval \'"0100"\'');
+  disp('   hats eval \'[0,1,0,0]\'');
+  disp('   hats eval \'W3\'');
+  disp('   hats eval \'ds(ds(W1))\'');
+  disp('   hats eval \'lr(W1,W1)\'');
 }
 
 function helpSearch() {
@@ -604,6 +611,10 @@ function helpSearch() {
   disp('   -c');
   disp('        Do not actually search. Instead output the optimized');
   disp('        JavaScript code which implements the search.');
+  disp('');
+  disp('Examples');
+  disp('   hats search -n 4 -q');
+  disp('   hats search -n 5 -d 6');
 }
 
 // -- Catalog of errors -------------------------------------------------------
