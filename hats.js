@@ -387,9 +387,12 @@ function lr(a, b) {
   let s = []; // to construct (b -> a)
   let i = -1;
   for (let u = 0; u < cb; ++u) {
-    s[++i] = b[u] + m;
-    for (let t = 1; t < ca; ++t) {
-      s[++i] = a[t];
+    for (let t = 0; t < ca; ++t) {
+      if (t == 0) {
+        s[++i] = b[u] + m;
+      } else {
+        s[++i] = a[t];
+      }
     }
   }
   return s;
@@ -406,10 +409,13 @@ function rr(a, b) {
   let s = []; // to construct (b -> a)
   let i = -1;
   for (let u = 0; u < cb; ++u) {
-    for (let t = 0; t < ca - 1; ++t) {
-      s[++i] = a[t];
+    for (let t = 0; t < ca; ++t) {
+      if (t == ca - 1) {
+        s[++i] = b[u] + m;
+      } else {
+        s[++i] = a[t];
+      }
     }
-    s[++i] = b[u] + m;
   }
   return s;
 }
@@ -425,11 +431,13 @@ function dr(a, b) {
   let s = []; // to construct (b -> a)
   let i = -1;
   for (let u = 0; u < cb; ++u) {
-    s[++i] = b[u] + m;
-    for (let t = 1; t < ca - 1; ++t) {
-      s[++i] = a[t];
+    for (let t = 0; t < ca ; ++t) {
+      if (t == 0 || t == ca - 1) {
+        s[++i] = b[u] + m;
+      } else {
+        s[++i] = a[t];
+      }
     }
-    s[++i] = b[u] + m;
   }
   return s;
 }
@@ -533,9 +541,9 @@ const C8 = rs(C7);
 const C9 = ds(C7);
 
 const R0 = T0;
-const R1 = dr(C3, R0);
-const R2 = dr(C3, R1);
-const R3 = dr(C3, R2);
+const R1 = dr(R0, C3);
+const R2 = dr(R1, C3);
+const R3 = dr(R2, C3);
 
 
 // == Command Line Parsing ====================================================
